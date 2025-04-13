@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hari Aakash - Tech Skills</title>
+  <link rel="stylesheet" href="everythingILove.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    function changeAesthetic(select) {
+      var value = select.value;
+      if(value === 'Professional') {
+        window.location.href = "professional.html";
+      } else if(value === 'Everything I love') {
+        window.location.href = "everythingILove.html";
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    header nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    
+    .aesthetic select {
+      background-color: #000;
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 1rem;
+    }
+    
+    .sections a {
+      color: #c0c0c0;
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      transition: background-color 0.3s;
+    }
+    
+    .sections a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 2rem 0;
+      text-shadow: 0 0 10px rgba(225, 0, 255, 0.5);
+    }
+    
+    .main-title {
+      font-size: 3rem;
+      margin: 3rem 0;
+      background: linear-gradient(to right, #e100ff, #7f00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .skill-card {
+      background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(10, 10, 10, 0.9));
+      border: 2px solid;
+      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      border-radius: 20px;
+      padding: 3rem; /* Increased padding */
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      min-height: 300px; /* Fixed minimum height */
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(225, 0, 255, 0.3);
+    }
+    
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #e100ff, #7f00ff);
+    }
+    
+    .skill-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .skill-icon {
+      font-size: 2.5rem;
+      margin-right: 1.5rem;
+      color: #e100ff;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .skill-title {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
+    
+    .skill-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex-grow: 1; /* Makes content take available space */
+    }
+    
+    .skill-description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #f0f0f0;
+      margin-bottom: 1.5rem; /* Add margin to compensate for removed progress bar */
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .tag {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: background 0.3s, transform 0.3s;
+    }
+    
+    .tag:hover {
+      background: linear-gradient(to right, #e100ff, #7f00ff);
+      transform: scale(1.05);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #fff;
+      margin-top: 3rem;
+    }
+    
+    .contact-info p {
+      margin: 0.5rem 0;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: #d9a7c7;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .skill-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .skill-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .skill-card {
+        padding: 2rem; /* Adjusted for mobile */
+        min-height: 250px; /* Adjusted for mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="aesthetic">
+        <select onchange="changeAesthetic(this)">
+          <option>Professional</option>
+          <option selected>Everything I love</option>
+        </select>
+      </div>
+      <div class="sections">
+        <a href="everythingILove.html">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="education.html">Education</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+    </nav>
+  </header>
+  
+  <main>
+    <h1 class="main-title">Things I Think I'm Good At</h1>
+    
+    <div class="skills-container" id="skills">
+      <!-- Competitive Programming -->
+      <div class="skill-card">
+        <div class="skill-header">
+          <i class="fas fa-code skill-icon"></i>
+          <h2 class="skill-title">Competitive Programming</h2>
+        </div>
+        <div class="skill-content">
+          <p class="skill-description">
+            International Master on Codeforces with strong algorithmic thinking and problem-solving skills. 
+            I enjoy the thrill of solving complex algorithmic challenges under time pressure and have 
+            participated in numerous competitions including ICPC regionals. My passion lies in optimizing 
+            solutions and finding the most elegant approach to difficult problems.
+          </p>
+          <!-- Progress bar removed -->
+          <div class="skill-tags">
+            <span class="tag">Algorithms</span>
+            <span class="tag">Data Structures</span>
+            <span class="tag">Problem Solving</span>
+            <span class="tag">C++</span>
+            <span class="tag">Codeforces</span>
+            <span class="tag">ICPC</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Artificial Intelligence -->
+      <div class="skill-card">
+        <div class="skill-header">
+          <i class="fas fa-brain skill-icon"></i>
+          <h2 class="skill-title">Artificial Intelligence</h2>
+        </div>
+        <div class="skill-content">
+          <p class="skill-description">
+            Fascinated by the potential of AI to solve real-world problems. I have experience working with 
+            various machine learning models, deep learning architectures, and natural language processing. 
+            Currently working on making algorithms learn algorithms - exploring the intersection of competitive 
+            programming and machine learning to create systems that can generate optimized code.
+          </p>
+          <!-- Progress bar removed -->
+          <div class="skill-tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Neural Networks</span>
+            <span class="tag">NLP</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">PyTorch</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Python -->
+      <div class="skill-card">
+        <div class="skill-header">
+          <i class="fab fa-python skill-icon"></i>
+          <h2 class="skill-title">Python</h2>
+        </div>
+        <div class="skill-content">
+          <p class="skill-description">
+            Python is my go-to language for quick prototyping and data science projects. I've developed 
+            numerous applications and tools using Python and its extensive ecosystem of libraries. 
+            From web scrapers to data analysis pipelines and machine learning models, I leverage Python's 
+            versatility to turn ideas into reality efficiently.
+          </p>
+          <!-- Progress bar removed -->
+          <div class="skill-tags">
+            <span class="tag">Data Science</span>
+            <span class="tag">Web Scraping</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Research -->
+      <div class="skill-card">
+        <div class="skill-header">
+          <i class="fas fa-microscope skill-icon"></i>
+          <h2 class="skill-title">Research</h2>
+        </div>
+        <div class="skill-content">
+          <p class="skill-description">
+            Working on research projects at Precog has honed my ability to formulate research questions, 
+            design experiments, and analyze results methodically. I enjoy diving deep into complex problems, 
+            reviewing literature, and contributing to the academic community. My research interests include 
+            algorithmic optimization, machine learning applications, and the theoretical foundations of AI.
+          </p>
+          <!-- Progress bar removed -->
+          <div class="skill-tags">
+            <span class="tag">Liter
+  </footer>
+  <footer>
+    <div class="contact-info">
+      <p><i class="fas fa-envelope"></i> Personal: hariaakash646@gmail.com</p>
+      <p><i class="fas fa-envelope"></i> Professional: hariaakash.k@research.iiit.ac.in</p>
+    </div>
+    <div class="social-links">
+      <a href="https://twitter.com/HariAakashK" target="_blank" title="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://linkedin.com/in/hariaakash646" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/HariAakash646" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+  <!-- Add analytics script before closing body tag -->
+  <script src="js/analytics.js"></script>
+</body>
+</html>

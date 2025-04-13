@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hari Aakash - Education Journey</title>
+  <link rel="stylesheet" href="everythingILove.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    function changeAesthetic(select) {
+      var value = select.value;
+      if(value === 'Professional') {
+        window.location.href = "professional.html";
+      } else if(value === 'Everything I love') {
+        window.location.href = "everythingILove.html";
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .aesthetic select {
+      background-color: #000;
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 1rem;
+    }
+    .sections a {
+      color: #c0c0c0;
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      transition: background-color 0.3s;
+    }
+    .sections a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 2rem 0;
+    }
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    
+    /* Center line */
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(to bottom, #e100ff, #7f00ff);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+      border-radius: 3px;
+      box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    }
+    
+    .timeline-item {
+      width: 45%;
+      position: relative;
+      margin-bottom: 60px;
+      transition: transform 0.3s ease;
+    }
+    
+    /* Circle markers */
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(45deg, #e100ff, #7f00ff);
+      border-radius: 50%;
+      top: 25px;
+      z-index: 1;
+      box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    }
+    
+    /* Left items */
+    .left {
+      left: 0;
+    }
+    
+    .left::after {
+      right: -10px;
+    }
+    
+    /* Right items */
+    .right {
+      left: 55%;
+    }
+    
+    .right::after {
+      left: -10px;
+    }
+    
+    /* Responsive adjustment */
+    @media screen and (max-width: 768px) {
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::after {
+        left: 21px;
+      }
+      
+      .left, .right {
+        left: 0;
+      }
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #fff;
+      margin-top: 3rem;
+    }
+    .contact-info p {
+      margin: 0.5rem 0;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #d9a7c7;
+    }
+
+    /* Styles for hover information */
+    .timeline-item {
+      /* ...existing styles... */
+      transition: transform 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .extra-info {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+      margin-top: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid #e100ff;
+    }
+    
+    .timeline-item:hover .extra-info {
+      height: auto;
+      max-height: 500px; /* Adjust based on content */
+      opacity: 1;
+      padding: 15px;
+      margin-top: 15px;
+    }
+    
+    .extra-info h4 {
+      margin-top: 0;
+      color: #e100ff;
+    }
+    
+    .extra-info ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    
+    .extra-info li {
+      margin-bottom: 5px;
+    }
+    
+    /* Badge styles */
+    .badge {
+      display: inline-block;
+      background: linear-gradient(45deg, #e100ff, #7f00ff);
+      color: white;
+      font-size: 0.8em;
+      padding: 3px 8px;
+      border-radius: 10px;
+      margin: 2px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="aesthetic">
+        <select onchange="changeAesthetic(this)">
+          <option>Professional</option>
+          <option selected>Everything I love</option>
+        </select>
+      </div>
+      <div class="sections">
+        <a href="everythingILove.html">Home</a>
+        <a href="#education">Education</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section id="education">
+      <h2>My Education Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item left">
+          <h3>Kindergarten</h3>
+          <p>Started my educational journey at Prim Rose. Completed Pre-Kg.</p>
+        </div>
+        <div class="timeline-item right">
+          <h3>Primary, Middle and High School</h3>
+          <p>I studied at Sindhi Model Sr. Sec. School from LKG to 12th grade. This is the place where I spent the largest chunk of my life in. Was a part of multiple clubs like Quix club, Debate club and Astronomy club. Founded the school programming club.</p>
+          
+          <!-- Extra information that appears on hover -->
+          <div class="extra-info">
+            <h4>Online Courses</h4>
+            <ul>
+              <li>Machine Learning by Andrew Ng <span class="badge">Coursera</span></li>
+              <li>Deep Learning Specialization <span class="badge">Coursera</span></li>
+              <li>Algorithms Specialization by Stanford <span class="badge">Coursera</span></li>
+            </ul>
+            
+            <h4>School Activities</h4>
+            <ul>
+              <li>President of Programming Club (2019-2020)</li>
+              <li>Vice Captain of Debate Team (2018-2020)</li>
+              <li>Science Exhibition Winner - AI Project (2019)</li>
+              <li>Astronomy Club - Organized stargazing events</li>
+            </ul>
+            
+            <h4>Extra Classes & Workshops</h4>
+            <ul>
+              <li>FIITJEE - Advanced Mathematics and Physics</li>
+              <li>Workshop on Robotics at IIT Madras</li>
+              <li>Python Summer Camp at IIIT Hyderabad</li>
+            </ul>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <h3>College</h3>
+          <p>Currently pursuing a degree in Computer Science at IIIT Hyderabad.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="contact-info">
+      <p><i class="fas fa-phone"></i> +91 9123456789</p>
+      <p><i class="fas fa-envelope"></i> hari.aakash@example.com</p>
+    </div>
+    <div class="social-links">
+      <a href="https://twitter.com/hariaakash" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com/in/hariaakash646" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/HariAakash646" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
+</body>
+</html>

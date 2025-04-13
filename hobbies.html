@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hari Aakash - Hobbies</title>
+  <link rel="stylesheet" href="everythingILove.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    header nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    
+    .sections a {
+      color: #c0c0c0;
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      transition: background-color 0.3s;
+    }
+    
+    .sections a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .main-title {
+      font-size: 3rem;
+      margin: 3rem 0;
+      background: linear-gradient(to right, #e100ff, #7f00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    
+    .hobbies-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .hobby-card {
+      background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(10, 10, 10, 0.9));
+      border: 2px solid;
+      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .hobby-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(225, 0, 255, 0.3);
+    }
+    
+    .hobby-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #e100ff, #7f00ff);
+    }
+    
+    .hobby-content {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    
+    @media (max-width: 768px) {
+      .hobby-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hobby-image {
+        margin-bottom: 1.5rem;
+      }
+    }
+    
+    .hobby-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 15px;
+      object-fit: cover;
+      border: 2px solid transparent;
+      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    .hobby-card:hover .hobby-image {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+    }
+    
+    .hobby-details {
+      flex-grow: 1;
+    }
+    
+    .hobby-title {
+      margin: 0 0 1rem 0;
+      font-size: 2.2rem;
+      color: #fff;
+      background: linear-gradient(to right, #e100ff, #7f00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hobby-description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #f0f0f0;
+    }
+    
+    .hobby-highlights {
+      margin-top: 1.5rem;
+    }
+    
+    .hobby-highlights h4 {
+      color: #d9a7c7;
+      margin-bottom: 0.5rem;
+    }
+    
+    .hobby-highlights ul {
+      padding-left: 1.5rem;
+    }
+    
+    .hobby-highlights li {
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #fff;
+      margin-top: 3rem;
+    }
+    
+    .contact-info p {
+      margin: 0.5rem 0;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: #d9a7c7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="sections">
+        <a href="everythingILove.html">Home</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="tech-skills.html">Tech Skills</a>
+        <a href="education.html">Education</a>
+      </div>
+    </nav>
+  </header>
+  
+  <main>
+    <h1 class="main-title">My Hobbies & Interests</h1>
+    
+    <div class="hobbies-container" id="hobbies">
+      <!-- Cricket -->
+      <div class="hobby-card">
+        <div class="hobby-content">
+          <img src="https://via.placeholder.com/250" alt="Cricket" class="hobby-image">
+          <div class="hobby-details">
+            <h2 class="hobby-title">Cricket</h2>
+            <p class="hobby-description">
+              Cricket isn't just a sport for me; it's a passion that has been with me since childhood.
+              Whether I'm playing with friends on weekends or watching intense international matches,
+              cricket always manages to bring excitement and joy to my life. The strategic aspects of the game,
+              combined with the skill and athleticism required, make it endlessly fascinating to me.
+            </p>
+            <div class="hobby-highlights">
+              <h4>Why I Love Cricket:</h4>
+              <ul>
+                <li>The perfect blend of individual performance and team strategy</li>
+                <li>The electric atmosphere during India-Pakistan matches</li>
+                <li>Playing as a middle-order batsman in college tournaments</li>
+                <li>Following the IPL every season and supporting Chennai Super Kings</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Basketball -->
+      <div class="hobby-card">
+        <div class="hobby-content">
+          <img src="https://via.placeholder.com/250" alt="Basketball" class="hobby-image">
+          <div class="hobby-details">
+            <h2 class="hobby-title">Basketball</h2>
+            <p class="hobby-description">
+              Basketball entered my life during high school and quickly became one of my favorite activities.
+              The fast-paced nature of the game, the teamwork required, and the constant action make it
+              incredibly engaging. I play point guard in casual games with friends, and I've developed a decent
+              three-point shot over the years of practice.
+            </p>
+            <div class="hobby-highlights">
+              <h4>My Basketball Journey:</h4>
+              <ul>
+                <li>Playing in weekend leagues with friends and colleagues</li>
+                <li>Following the NBA and supporting the Golden State Warriors</li>
+                <li>Learning new techniques and improving my shooting form</li>
+                <li>The thrill of close games and last-minute shots</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sci-Fi & Fantasy -->
+      <div class="hobby-card">
+        <div class="hobby-content">
+          <img src="https://via.placeholder.com/250" alt="Sci-Fi and Fantasy" class="hobby-image">
+          <div class="hobby-details">
+        <h2 class="hobby-title">Sci-Fi & Fantasy</h2>
+        <p class="hobby-description">
+          I've been a dedicated sci-fi and fantasy enthusiast since I discovered Asimov's Foundation series as a teenager. 
+          These genres have shaped my imagination, offered escape, and provided interesting thought experiments about 
+          technology, society, and human potential. Whether it's exploring distant galaxies or magical realms, I'm always 
+          ready for the next adventure.
+        </p>
+        <div class="hobby-highlights">
+          <h4>Favorite Worlds to Explore:</h4>
+          <ul>
+            <li>The intricate world-building of Dune and The Wheel of Time</li>
+            <li>The philosophical questions raised in works like The Left Hand of Darkness</li>
+            <li>Epic fantasy series that blend magic and politics like A Song of Ice and Fire</li>
+            <li>Shows that reimagine humanity's future like Star Trek and The Expanse</li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+      
+        </div>
+      </main>
+      
+    <footer id="contact">
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> Personal: hariaakash646@gmail.com</p>
+        <p><i class="fas fa-envelope"></i> Professional: hariaakash.k@research.iiit.ac.in</p>
+      </div>
+      <div class="social-links">
+        <a href="https://twitter
+

@@ -1,0 +1,18 @@
+/* Professional aesthetic styling */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+header {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+}
+.sections a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #333;
+}
+.aesthetic select {
+  padding: 5px;
+}

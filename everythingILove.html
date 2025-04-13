@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hari Aakash - Everything I love</title>
+  <link rel="stylesheet" href="everythingILove.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const aboutHeading = document.querySelector('#about h2');
+      const aboutParagraph = document.querySelector('#about p');
+      const originalText = aboutHeading.textContent;
+      const originalParagraphText = aboutParagraph.textContent;
+      
+      // Clear the paragraph text initially
+      aboutParagraph.textContent = '';
+      
+      // Typing effect for the About Me text
+      let i = 0;
+      function typeText() {
+        if (i < originalParagraphText.length) {
+          aboutParagraph.textContent += originalParagraphText.charAt(i);
+          i++;
+          setTimeout(typeText, 30); // Adjust typing speed here (lower = faster)
+        }
+      }
+      
+      // Start typing effect after a short delay
+      setTimeout(typeText, 500);
+
+      // Periodic text change for about heading
+      setInterval(() => {
+         aboutHeading.textContent = "I am Spiderman";
+         setTimeout(() => {
+            aboutHeading.textContent = originalText;
+         }, 5000);
+      }, 60000);
+
+      // Fade in sections
+      const sections = document.querySelectorAll('section:not(#about)');
+      sections.forEach((section, index) => {
+        section.style.opacity = '0';
+        setTimeout(() => {
+          section.style.opacity = '1';
+        }, 500 * (index + 1));
+      });
+    });
+  </script>
+  <!-- Add Font Awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    #about {
+      height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      width: 100%;
+    }
+    #about h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+    #about p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+    section:not(#about) {
+      border: none;
+      padding: 3rem 2rem;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 1200px;
+      min-height: 300px;
+      position: relative;
+      z-index: 1;
+      transition: all 0.5s ease;
+      border-radius: 50px;
+      background: linear-gradient(45deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    section:not(#about) h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+    #interests {
+      background: linear-gradient(45deg, rgba(75, 0, 130, 0.9), rgba(138, 43, 226, 0.7));
+      position: relative;
+      overflow: hidden;
+      border-radius: 50px 50px 0 0;
+      margin-top: 2rem;
+    }
+    #interests::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(148, 0, 211, 0.1), rgba(75, 0, 130, 0.1));
+      pointer-events: none;
+      border-radius: 50px 50px 0 0;
+    }
+    #interests:hover {
+      background: linear-gradient(45deg, rgba(138, 43, 226, 0.9), rgba(148, 0, 211, 0.7));
+    }
+    #interests h2 {
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-size: 2.5rem;
+      position: relative;
+    }
+    #interests h2::before,
+    #interests h2::after {
+      display: none;
+    }
+    .interests-grid {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .interests-grid a {
+      flex: 1 1 0;
+      min-width: 300px;
+      min-height: 200px; /* Further reduced from 250px to 200px */
+      text-decoration: none;
+      color: inherit;
+      text-align: center;
+      padding: 1.5rem 2rem; /* Reduced vertical padding from 2rem to 1.5rem */
+      border-radius: 15px;
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      border: 2px solid;
+      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .interests-grid a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #ff00cc, #3333ff);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.5s ease;
+    }
+    .interests-grid a:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+    .interests-grid a:hover::before {
+      opacity: 0.2;
+    }
+    .interests-grid img {
+      width: 100%;
+      max-width: 200px; /* Reduced from 250px to 200px to fit better in shorter boxes */
+      height: auto;
+      border-radius: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+    }
+    .interests-grid a:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+    }
+    .interest-info h3 {
+      color: #fff;
+      margin-top: 1rem; /* Reduced from 1.5rem to 1rem */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      transition: color 0.3s ease;
+    }
+    .interests-grid a:hover .interest-info h3 {
+      color: #d9a7c7;
+    }
+    #projects {
+      background: linear-gradient(45deg, rgba(0, 100, 0, 0.9), rgba(0, 100, 0, 0.7));
+      border-radius: 0;
+      margin: 2rem auto;
+    }
+    #projects:hover {
+      background: linear-gradient(45deg, rgba(0, 255, 0, 0.9), rgba(0, 255, 0, 0.7));
+    }
+    #contact {
+      background: none;
+      border-radius: 0;
+      margin-bottom: 2rem;
+    }
+    #contact:hover {
+      background: none;
+    }
+    .project-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      min-height: 200px;
+      width: 100%;
+      max-width: 1000px;
+    }
+    @media (min-width: 600px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .sections a {
+      color: #c0c0c0;
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      transition: background-color 0.3s;
+    }
+    .sections a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .miles-animation {
+      position: fixed;
+      top: 40%;
+      left: -200px;
+      width: 200px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1000; /* Ensure it's above all other elements */
+    }
+    @keyframes swingIn {
+      0% { transform: translateX(0) rotate(0deg); opacity: 0; }
+      50% { transform: translateX(300px) rotate(20deg); opacity: 1; }
+      100% { transform: translateX(100vw) rotate(0deg); opacity: 0; }
+    }
+    #about:hover .miles-animation {
+      animation: swingIn 2s forwards;
+    }
+    #about:hover h2 {
+       color: #ff0000;
+    }
+    #about:hover p {
+      color: #ff0000;
+    }
+    
+    /* Tooltip styles */
+    .tooltip-container {
+      position: relative;
+    }
+    .tooltip {
+      visibility: hidden;
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #111;
+      color: #fff;
+      border: 2px solid #ff0000;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s, visibility 0.3s;
+      pointer-events: none;
+      width: max-content;
+      max-width: 200px;
+      z-index: 100;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -8px;
+      border-width: 8px;
+      border-style: solid;
+      border-color: #ff0000 transparent transparent transparent;
+    }
+    .tooltip-container:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+    main {
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 800px) {
+      .interests-grid {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+      }
+      
+      .interests-grid a {
+        width: 100%;
+        min-width: unset;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .interests-grid img {
+        margin: 0 auto;
+        display: block;
+      }
+      
+      .interest-info {
+        text-align: center;
+        width: 100%;
+      }
+    }
+    /* Footer styles */
+    footer {
+      padding: 1rem;
+      margin: 1rem auto;
+      width: 90%;
+      text-align: center;
+      background-color: #000; /* Match body background */
+      border-top: 1px solid #fff; /* Thin separator line */
+    }
+    .contact-info {
+      margin-bottom: 1rem;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .social-links a {
+      color: #fff;
+      font-size: 2rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #4da6ff;
+    }
+    /* Replace projects section styles with explore section */
+    #explore {
+      background: linear-gradient(45deg, rgba(75, 0, 130, 0.9), rgba(138, 43, 226, 0.7));
+      border-radius: 0;
+      margin: 2rem auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #explore::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(148, 0, 211, 0.1), rgba(75, 0, 130, 0.1));
+      pointer-events: none;
+    }
+    
+    #explore:hover {
+      background: linear-gradient(45deg, rgba(138, 43, 226, 0.9), rgba(148, 0, 211, 0.7));
+    }
+    
+    #explore h2 {
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-size: 2.5rem;
+      position: relative;
+    }
+    
+    /* Page links styling */
+    .page-links {
+      display: grid;
+      /* Default to a single column (4x1 layout) */
+      grid-template-columns: 1fr; 
+      gap: 2rem;
+      width: 100%;
+      max-width: 1000px; /* Keep max-width */
+      justify-items: center; /* Center items in the single column */
+    }
+    
+    /* Media query for wider screens (2x2 layout) */
+    @media (min-width: 600px) {
+      .page-links {
+        /* Switch to two columns */
+        grid-template-columns: repeat(2, 1fr); 
+      }
+    }
+    
+    .page-link-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-radius: 15px;
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      border: 2px solid;
+      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      width: 100%; /* Ensure cards take full width in their grid cell */
+      max-width: 350px; /* Optional: Limit card width for better appearance */
+    }
+    
+    .page-link-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #ff00cc, #3333ff);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.5s ease;
+    }
+    
+    .page-link-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .page-link-card:hover::before {
+      opacity: 0.2;
+    }
+    
+    .page-link-card i {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #f8f8f8;
+      transition: all 0.3s ease;
+    }
+    
+    .page-link-card:hover i {
+      transform: scale(1.2);
+      color: #ff80bf;
+    }
+    
+    .page-link-card h3 {
+      margin: 0.5rem 0;
+      font-size: 1.5rem;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    
+    .page-link-card:hover h3 {
+      color: #d9a7c7;
+    }
+    
+    .page-link-card p {
+      color: #f8f8f8;
+      font-size: 0.9rem;
+    }
+
+    /* Updated mobile styles for proper centering */
+    @media (max-width: 800px) {
+      .interests-grid {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+      }
+      
+      .interests-grid a {
+        width: 100%;
+        min-width: unset;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      .interests-grid img {
+        margin: 0 auto;
+        display: block;
+      }
+      
+      .interest-info {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav style="display: flex; justify-content: flex-end; align-items: center;">
+      <!-- Right side: Section Links -->
+      <div class="sections">
+        <a href="#about">About</a>
+        <a href="#explore">Explore</a>
+        <a href="#contact">Contact</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- Update image positioning and further reduce gap -->
+    <div class="profile-image-container" style="text-align: center; margin: 2rem auto 0.2rem; position: relative; width: 200px;">
+      <a href="gallery.html" style="text-decoration: none; color: inherit; display: block;">
+        <img src="images/my_pic.jpg" alt="My Picture" style="width: 100%; border-radius: 50%; border: 3px solid #ffd700; display: block;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; background: rgba(0, 0, 0, 0.7); padding: 0.5rem 1rem; border-radius: 8px; opacity: 0; transition: opacity 0.3s;" class="hover-text">
+          Click here for more pictures
+        </div>
+      </a>
+    </div>
+    <script>
+      // Fixed hover effect for the image with more specific selector
+      document.addEventListener('DOMContentLoaded', function() {
+        const imgContainer = document.querySelector('.profile-image-container a');
+        const hoverText = document.querySelector('.profile-image-container .hover-text');
+        
+        imgContainer.addEventListener('mouseover', function() {
+          hoverText.style.opacity = '1';
+        });
+        
+        imgContainer.addEventListener('mouseout', function() {
+          hoverText.style.opacity = '0';
+        });
+      });
+    </script>
+    <!-- Further adjust padding at top of about section and improve responsiveness -->
+    <style>
+      #about {
+        padding-top: 0.5rem;
+        min-height: auto; /* Allow it to shrink if needed */
+        height: auto;
+        margin-bottom: 1rem;
+      }
+      
+      /* Improved responsiveness */
+      @media (max-width: 768px) {
+        #about {
+          padding: 0.5rem 1rem 1rem;
+        }
+        #about h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+        #about p {
+          font-size: 1.2rem;
+        }
+        section:not(#about) {
+          width: 95%;
+          padding: 2rem 1rem;
+          margin: 1rem auto;
+        }
+      }
+      
+      /* Very small screens */
+      @media (max-width: 480px) {
+        #about h2 {
+          font-size: 2rem;
+        }
+        #about p {
+          font-size: 1rem;
+        }
+        .project-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <!-- ...existing content... -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am Hari Aakash, a freshman at IIIT Hyderabad. Love learning about algorithms and making algorithms learn. Working on making algorithms learn algorithms.
+        I am a Competitive Programmer(International Master @Codeforces). Working on research projects @Precog.</p>
+      <div class="miles-animation">
+        <img src="images/miles_swing.png" alt="Miles Morales Animation" style="width:100%;">
+      </div>
+    </section>
+    <section id="interests">
+        <h2>My Biggest Interests</h2>
+        <div class="interests-grid">
+            <a href="competitive.html" class="tooltip-container">
+              <div class="tooltip">ICPC World Finals at Azerbaijan</div>
+              <img src="https://via.placeholder.com/200" alt="Competitive Programming">
+              <div class="interest-info">
+                  <h3>Competitive Programming</h3>
+              </div>
+            </a>
+            <a href="ai.html">
+            <img src="https://via.placeholder.com/200" alt="Artificial Intelligence">
+            <div class="interest-info">
+                <h3>Artificial Intelligence</h3>
+            </div>
+            </a>
+        </div>
+    </section>
+    <!-- New section replacing projects -->
+    <section id="explore">
+      <h2>My Universe</h2>
+      <div class="page-links">
+        <a href="education.html" class="page-link-card">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Education</h3>
+          <p>My journey through the world of learning</p>
+        </a>
+        <a href="tech-skills.html" class="page-link-card">
+          <i class="fas fa-laptop-code"></i>
+          <h3>Tech Powers</h3>
+          <p>Digital tools I've mastered</p>
+        </a>
+        <a href="hobbies.html" class="page-link-card">
+          <i class="fas fa-gamepad"></i>
+          <h3>Hobbies</h3>
+          <p>How I spend my free time</p>
+        </a>
+        <a href="achievements.html" class="page-link-card">
+          <i class="fas fa-trophy"></i>
+          <h3>Achievements</h3>
+          <p>Recognitions and milestones I'm proud of</p>
+        </a>
+        <!-- Music card removed -->
+      </div>
+    </section>
+    <!-- New CV download section -->
+    <section class="cv-download-section">
+      <div class="container">
+        <h2>My Resume</h2>
+        <p>Want to learn more about my professional background and skills?</p>
+        <a href="documents/HariAakashK_Resume.pdf" download class="download-button">
+          <i class="fas fa-file-download"></i> Download CV
+        </a>
+      </div>
+      <style>
+        .cv-download-section {
+          background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(10, 10, 10, 0.9));
+          padding: 3rem 0;
+          text-align: center;
+          margin-top: 2rem;
+        }
+        
+        .cv-download-section .container {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        
+        .cv-download-section h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          background: linear-gradient(to right, #e100ff, #7f00ff);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        
+        .cv-download-section p {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          color: #f0f0f0;
+        }
+        
+        .download-button {
+          display: inline-block;
+          padding: 1rem 2rem;
+          background: linear-gradient(to right, #e100ff, #7f00ff);
+          color: white;
+          text-decoration: none;
+          border-radius: 30px;
+          font-size: 1.2rem;
+          font-weight: bold;
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .download-button:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(225, 0, 255, 0.3);
+        }
+        
+        .download-button i {
+          margin-right: 0.5rem;
+        }
+      </style>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <p><i class="fas fa-envelope"></i> Personal: hariaakash646@gmail.com</p>
+      <p><i class="fas fa-envelope"></i> Professional: hariaakash.k@research.iiit.ac.in</p>
+    </div>
+    <div class="social-links">
+      <a href="https://twitter.com/HariAakashK" target="_blank" title="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://linkedin.com/in/hariaakash646" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/HariAakash646" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+  <!-- Add analytics script before closing body tag -->
+  <script src="js/analytics.js"></script>
+</body>
+</html>
