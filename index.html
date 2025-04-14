@@ -47,7 +47,63 @@
   </script>
   <!-- Add Font Awesome for social media icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    /* Base font styling */
+    body {
+      font-family: 'Share Tech Mono', monospace;
+    }
+    
+    /* Navigation styling */
+    nav a, .menu-item {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    
+    /* Headings styling */
+    h1, h2, h3, .section-title, .main-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    
+    /* Content areas */
+    p, .bio, .description, .content-text {
+      font-family: 'Share Tech Mono', monospace;
+    }
+    
+    /* Terminal-style text */
+    .code, pre, code, .skill-description, .project-details {
+      font-family: 'VT323', monospace;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Buttons and interactive elements */
+    button, .button, .btn, input[type="submit"] {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+    }
+    
+    /* List items and details */
+    li, .list-item, .details {
+      font-family: 'Share Tech Mono', monospace;
+    }
+    
+    /* Footer items */
+    footer, .contact-info {
+      font-family: 'Share Tech Mono', monospace;
+    }
+    
+    /* Any specific elements you want to style with VT323 */
+    .terminal-text, .tech-skill, .code-snippet {
+      font-family: 'VT323', monospace;
+      font-size: 1.2rem;
+    }
     body {
       background-color: #000;
       color: #fff;
@@ -100,11 +156,14 @@
       width: 100%;
     }
     #interests {
-      background: linear-gradient(45deg, rgba(75, 0, 130, 0.9), rgba(138, 43, 226, 0.7));
+      background: linear-gradient(45deg, rgba(180, 0, 0, 0.9), rgba(220, 0, 0, 0.7));
       position: relative;
       overflow: hidden;
       border-radius: 50px 50px 0 0;
       margin-top: 2rem;
+      padding: 3rem 2rem;
+      width: 80%;
+      max-width: 1200px;
     }
     #interests::before {
       content: '';
@@ -113,12 +172,12 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(45deg, rgba(148, 0, 211, 0.1), rgba(75, 0, 130, 0.1));
+      background: linear-gradient(45deg, rgba(220, 0, 0, 0.1), rgba(180, 0, 0, 0.1));
       pointer-events: none;
       border-radius: 50px 50px 0 0;
     }
     #interests:hover {
-      background: linear-gradient(45deg, rgba(138, 43, 226, 0.9), rgba(148, 0, 211, 0.7));
+      background: linear-gradient(45deg, rgba(255, 0, 0, 0.9), rgba(200, 0, 0, 0.7));
     }
     #interests h2 {
       color: #fff;
@@ -136,17 +195,16 @@
       justify-content: center;
       align-items: stretch;
       width: 100%;
-      max-width: 1000px;
+      max-width: 100%;
       margin: 0 auto;
     }
-    .interests-grid a {
+    .interest-card {
       flex: 1 1 0;
-      min-width: 300px;
-      min-height: 200px; /* Further reduced from 250px to 200px */
-      text-decoration: none;
+      min-width: 250px;
+      min-height: 200px;
       color: inherit;
       text-align: center;
-      padding: 1.5rem 2rem; /* Reduced vertical padding from 2rem to 1.5rem */
+      padding: 1.5rem 1rem;
       border-radius: 15px;
       transition: all 0.5s ease;
       position: relative;
@@ -155,30 +213,42 @@
       background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(5px);
       border: 2px solid;
-      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      border-image: linear-gradient(to right, #ff0000, #990000) 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      max-width: calc(50% - 2rem);
+      cursor: pointer;
     }
-    .interests-grid a::before {
+    .interest-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, #ff00cc, #3333ff);
+      background: linear-gradient(45deg, #ff0000, #990000);
       opacity: 0;
       z-index: -1;
       transition: opacity 0.5s ease;
     }
-    .interests-grid a:hover {
+    .interest-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     }
-    .interests-grid a:hover::before {
+    .interest-card:hover::before {
       opacity: 0.2;
+    }
+    .interest-card:hover .icon-container {
+      transform: scale(1.05);
+    }
+    .interest-card:hover .icon-large {
+      color: #ff9999;
+      transform: scale(1.1);
+    }
+    .interest-card:hover .interest-info h3 {
+      color: #ff9999;
     }
     .interests-grid img {
       width: 100%;
@@ -187,11 +257,11 @@
       border-radius: 15px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 2px solid transparent;
-      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      border-image: linear-gradient(to right, #ff0000, #990000) 1;
     }
     .interests-grid a:hover img {
       transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
     }
     .interest-info h3 {
       color: #fff;
@@ -200,7 +270,7 @@
       transition: color 0.3s ease;
     }
     .interests-grid a:hover .interest-info h3 {
-      color: #d9a7c7;
+      color: #ff9999;
     }
     #projects {
       background: linear-gradient(45deg, rgba(0, 100, 0, 0.9), rgba(0, 100, 0, 0.7));
@@ -362,7 +432,7 @@
     }
     /* Replace projects section styles with explore section */
     #explore {
-      background: linear-gradient(45deg, rgba(75, 0, 130, 0.9), rgba(138, 43, 226, 0.7));
+      background: linear-gradient(45deg, rgba(180, 0, 0, 0.9), rgba(220, 0, 0, 0.7));
       border-radius: 0;
       margin: 2rem auto;
       position: relative;
@@ -376,19 +446,12 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(45deg, rgba(148, 0, 211, 0.1), rgba(75, 0, 130, 0.1));
+      background: linear-gradient(45deg, rgba(220, 0, 0, 0.1), rgba(180, 0, 0, 0.1));
       pointer-events: none;
     }
     
     #explore:hover {
-      background: linear-gradient(45deg, rgba(138, 43, 226, 0.9), rgba(148, 0, 211, 0.7));
-    }
-    
-    #explore h2 {
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      font-size: 2.5rem;
-      position: relative;
+      background: linear-gradient(45deg, rgba(255, 0, 0, 0.9), rgba(200, 0, 0, 0.7));
     }
     
     /* Page links styling */
@@ -396,7 +459,7 @@
       display: grid;
       /* Default to a single column (4x1 layout) */
       grid-template-columns: 1fr; 
-      gap: 2rem;
+      gap: 3rem; /* Increase gap from 2rem to 3rem */
       width: 100%;
       max-width: 1000px; /* Keep max-width */
       justify-items: center; /* Center items in the single column */
@@ -407,6 +470,7 @@
       .page-links {
         /* Switch to two columns */
         grid-template-columns: repeat(2, 1fr); 
+        gap: 3rem 4rem; /* Row gap 3rem, column gap 4rem for more horizontal spacing */
       }
     }
     
@@ -421,13 +485,14 @@
       background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(5px);
       border: 2px solid;
-      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      border-image: linear-gradient(to right, #ff0000, #990000) 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
       width: 100%; /* Ensure cards take full width in their grid cell */
       max-width: 350px; /* Optional: Limit card width for better appearance */
+      margin: 0.5rem; /* Add margin around each card */
     }
     
     .page-link-card::before {
@@ -437,7 +502,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, #ff00cc, #3333ff);
+      background: linear-gradient(45deg, #ff0000, #990000);
       opacity: 0;
       z-index: -1;
       transition: opacity 0.5s ease;
@@ -461,7 +526,7 @@
     
     .page-link-card:hover i {
       transform: scale(1.2);
-      color: #ff80bf;
+      color: #ff9999;
     }
     
     .page-link-card h3 {
@@ -472,7 +537,7 @@
     }
     
     .page-link-card:hover h3 {
-      color: #d9a7c7;
+      color: #ff9999;
     }
     
     .page-link-card p {
@@ -507,6 +572,112 @@
         width: 100%;
       }
     }
+    .cv-download-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #ff0000, #990000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .download-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, #ff0000, #990000);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .download-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+    }
+
+    /* Add this new style to remove underlines from page link cards */
+    .page-links a.page-link-card {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Add these new styles for the icon replacement */
+    .icon-container {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(50, 50, 50, 0.8), rgba(20, 20, 20, 0.8));
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      border: 2px solid;
+      border-image: linear-gradient(to right, #ff0000, #990000) 1;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .icon-large {
+      font-size: 6rem;
+      color: #f8f8f8;
+      transition: all 0.3s ease;
+    }
+    
+    .interests-grid a:hover .icon-container {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+    }
+    
+    .interests-grid a:hover .icon-large {
+      color: #ff9999;
+      transform: scale(1.1);
+    }
+
+    /* Updated styles for the icon container */
+    .icon-container {
+      width: 120px; /* Smaller size */
+      height: 120px; /* Smaller size */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent; /* Remove background */
+      border-radius: 15px;
+      margin-bottom: 0.5rem; /* Reduced margin */
+      border: none; /* Remove border */
+      transition: transform 0.3s ease;
+    }
+    
+    .icon-large {
+      font-size: 4rem; /* Smaller icon */
+      color: #ff6666; /* More visible color that fits the red theme */
+      transition: all 0.3s ease;
+    }
+    
+    .interests-grid a {
+      /* ...existing styles... */
+      padding: 1.5rem 1rem; /* Reduced horizontal padding */
+    }
+    
+    .interests-grid a:hover .icon-container {
+      transform: scale(1.05);
+      /* Remove box shadow since there's no background */
+    }
+    
+    .interests-grid a:hover .icon-large {
+      color: #ff9999;
+      transform: scale(1.1);
+    }
+    
+    /* New style for the description text */
+    .interest-description {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #cccccc;
+      line-height: 1.4;
+      text-align: center;
+      font-family: 'Share Tech Mono', monospace;
+    }
   </style>
 </head>
 <body>
@@ -518,6 +689,7 @@
         <a href="#explore">Explore</a>
         <a href="#contact">Contact</a>
         <a href="gallery.html">Gallery</a>
+        <a href="reviews.html">Reviews</a>
       </div>
     </nav>
   </header>
@@ -599,19 +771,32 @@
     <section id="interests">
         <h2>My Biggest Interests</h2>
         <div class="interests-grid">
-            <a href="competitive.html" class="tooltip-container">
+            <div class="interest-card tooltip-container">
               <div class="tooltip">ICPC World Finals at Azerbaijan</div>
-              <img src="https://via.placeholder.com/200" alt="Competitive Programming">
+              <div class="icon-container">
+                <i class="fas fa-code icon-large"></i>
+              </div>
               <div class="interest-info">
                   <h3>Competitive Programming</h3>
+                  <p class="interest-description">
+                    International Master at Codeforces. Qualified for ICPC World Finals 2025 at Azerbaijan.
+                    Love solving algorithmic puzzles and optimizing solutions.
+                  </p>
               </div>
-            </a>
-            <a href="ai.html">
-            <img src="https://via.placeholder.com/200" alt="Artificial Intelligence">
-            <div class="interest-info">
-                <h3>Artificial Intelligence</h3>
             </div>
-            </a>
+            <div class="interest-card">
+              <div class="icon-container">
+                <i class="fas fa-brain icon-large"></i>
+              </div>
+              <div class="interest-info">
+                  <h3>Artificial Intelligence</h3>
+                  <p class="interest-description">
+                    Enjoy learning about how machines learn and making machines learn. 
+                    Working on Artificial Intelligence research at Precog@IIITH.
+                    Currently working with Graph Language Models.
+                  </p>
+              </div>
+            </div>
         </div>
     </section>
     <!-- New section replacing projects -->
@@ -663,35 +848,10 @@
           margin: 0 auto;
         }
         
-        .cv-download-section h2 {
-          font-size: 2.5rem;
-          margin-bottom: 1rem;
-          background: linear-gradient(to right, #e100ff, #7f00ff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-        
         .cv-download-section p {
           font-size: 1.2rem;
           margin-bottom: 2rem;
           color: #f0f0f0;
-        }
-        
-        .download-button {
-          display: inline-block;
-          padding: 1rem 2rem;
-          background: linear-gradient(to right, #e100ff, #7f00ff);
-          color: white;
-          text-decoration: none;
-          border-radius: 30px;
-          font-size: 1.2rem;
-          font-weight: bold;
-          transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .download-button:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 20px rgba(225, 0, 255, 0.3);
         }
         
         .download-button i {

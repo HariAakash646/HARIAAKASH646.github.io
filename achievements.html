@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hari Aakash - Achievements</title>
+  <link rel="stylesheet" href="everythingILove.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    header nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    
+    .sections a {
+      color: #c0c0c0;
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      transition: background-color 0.3s;
+    }
+    
+    .sections a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .main-title {
+      font-size: 3rem;
+      margin: 2rem 0;
+      background: linear-gradient(to right, #ff0000, #990000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    
+    .subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      color: #c0c0c0;
+      font-style: italic;
+    }
+    
+    .achievements-section {
+      margin: 4rem 0;
+    }
+    
+    .achievements-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .achievements-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, #ff0000, #990000);
+    }
+    
+    .achievement-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .achievement-card {
+      background: rgba(20, 20, 20, 0.7);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      border-left: 4px solid;
+      border-image: linear-gradient(to bottom, #ff0000, #990000) 1 0 0 1;
+    }
+    
+    .achievement-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .achievement-card:hover::before {
+      opacity: 1;
+    }
+    
+    .achievement-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .achievement-title i {
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      color: #ff0000;
+    }
+    
+    .achievement-title h3 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: #fff;
+    }
+    
+    .achievement-details {
+      color: #c0c0c0;
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+    
+    .achievement-date {
+      display: inline-block;
+      background: rgba(255, 0, 0, 0.1);
+      color: #ff9999;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      border: 1px solid rgba(255, 0, 0, 0.3);
+    }
+    
+    .achievement-link {
+      display: inline-flex;
+      align-items: center;
+      color: #ff9999;
+      text-decoration: none;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    
+    .achievement-link i {
+      margin-left: 0.5rem;
+    }
+    
+    .achievement-link:hover {
+      color: #ff0000;
+    }
+    
+    /* Special feature for featured achievements */
+    .featured {
+      position: relative;
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(40, 40, 40, 0.9), rgba(20, 20, 20, 0.9));
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .featured::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 15px;
+      border: 2px solid transparent;
+      background: linear-gradient(45deg, #ff0000, #990000) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+    }
+    
+    .featured .achievement-title {
+      display: flex;
+      align-items: center;
+    }
+    
+    .featured .achievement-title::before {
+      content: '★';
+      color: #ff0000;
+      font-size: 1.8rem;
+      margin-right: 1rem;
+    }
+    
+    .featured .achievement-details {
+      font-size: 1.1rem;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #333;
+      margin-top: 3rem;
+    }
+    
+    .contact-info p {
+      margin: 0.5rem 0;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: #ff9999;
+    }
+    
+    @media (max-width: 768px) {
+      .achievement-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .main-title {
+        font-size: 2.5rem;
+      }
+      
+      .achievements-section h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="sections">
+        <a href="index.html">Home</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a href="tech-skills.html">Tech Skills</a>
+        <a href="education.html">Education</a>
+        <a href="reviews.html">Reviews</a>
+      </div>
+    </nav>
+  </header>
+  
+  <main>
+    <h1 class="main-title">My Achievements</h1>
+    <p class="subtitle">The milestones that define my journey so far</p>
+    
+    <section class="achievements-section">
+      <h2>Competitive Programming</h2>
+      
+      <div class="achievement-cards">
+        <div class="achievement-card featured">
+          <div class="achievement-title">
+            <h3>ICPC World Finals Qualifier</h3>
+          </div>
+          <p class="achievement-details">Qualified for the International Collegiate Programming Contest World Finals in Azerbaijan, representing IIIT Hyderabad. Our team, SubtasksWhere, solved 10 out of 11 problems, winning the Kanpur regionals and qualified for the world finals.</p>
+          <span class="achievement-date">2024-2025</span>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-title">
+            <i class="fas fa-trophy"></i>
+            <h3>International Master @Codeforces</h3>
+          </div>
+          <p class="achievement-details">Ranked an International Master at Codeforcres with a personal best rating of 2380.</p>
+          <span class="achievement-date">2024</span>
+          <a href="https://codeforces.com/profile/hariaakash646" class="achievement-link">View profile <i class="fas fa-external-link-alt"></i></a>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-title">
+            <i class="fas fa-award"></i>
+            <h3>INOI Gold Medalist</h3>
+          </div>
+          <p class="achievement-details">Ranked top 10 in the Indian National Olympiad of Informatics and received a gold medal.</p>
+          <span class="achievement-date">2024</span>
+        </div>
+      </div>
+    </section>
+    
+    <section class="achievements-section">
+      <h2>Other Stuff I have done well in</h2>
+      
+      <div class="achievement-cards">
+        <div class="achievement-card">
+          <div class="achievement-title">
+            <i class="fas fa-microscope"></i>
+            <h3>NSS Space Settlement Contest</h3>
+          </div>
+          <p class="achievement-details">Received 3rd prize in the International level Space Settlement designing contest conducted by NSS (National
+            Space Society). Worked along with a team of 6 and I worked on developing the code required for the
+            settlement.</p>
+          <span class="achievement-date">2021</span>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-title">
+            <i class="fas fa-project-diagram"></i>
+            <h3>Kick-off, Shaastra-IITM Data Science Challenge</h3>
+          </div>
+          <p class="achievement-details">Secured third place in the national level data science challenge (Kick-off 2022) conducted by Shaastra-IITm.
+            The task was to determine the value of football players based on various parameters.</p>
+          <span class="achievement-date">2022</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <p><i class="fas fa-envelope"></i> Personal: hariaakash646@gmail.com</p>
+      <p><i class="fas fa-envelope"></i> Professional: hariaakash.k@research.iiit.ac.in</p>
+    </div>
+    <div class="social-links">
+      <a href="https://twitter.com/HariAakashK" target="_blank" title="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://linkedin.com/in/hariaakash646" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://github.com/HariAakash646" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>

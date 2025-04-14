@@ -5,12 +5,16 @@
   <title>Hari Aakash - Reviews</title>
   <link rel="stylesheet" href="everythingILove.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #000;
       color: #fff;
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Share Tech Mono', monospace;
     }
     
     header nav {
@@ -25,6 +29,9 @@
       text-decoration: none;
       padding: 0.3rem 0.6rem;
       transition: background-color 0.3s;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      letter-spacing: 1px;
     }
     
     .sections a:hover {
@@ -34,10 +41,14 @@
     .main-title {
       font-size: 3rem;
       margin: 3rem 0;
-      background: linear-gradient(to right, #e100ff, #7f00ff);
+      background: linear-gradient(to right, #ff2600, #da1900);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
     
     .reviews-container {
@@ -49,7 +60,7 @@
     .review-form {
       background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(10, 10, 10, 0.9));
       border: 2px solid;
-      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      border-image: linear-gradient(to right, #f14501, #eb2f00) 1;
       border-radius: 20px;
       padding: 2rem;
       margin-bottom: 2rem;
@@ -71,6 +82,8 @@
       display: block;
       margin-bottom: 0.5rem;
       color: #d9a7c7;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
     }
     
     input[type="text"], textarea {
@@ -81,6 +94,8 @@
       color: white;
       border-radius: 5px;
       font-size: 1rem;
+      font-family: 'VT323', monospace;
+      font-size: 1.2rem;
     }
     
     textarea {
@@ -92,7 +107,7 @@
     }
     
     .submit-btn, .export-btn {
-      background: linear-gradient(to right, #e100ff, #7f00ff);
+      background: linear-gradient(to right, #ff0000, #990000);
       color: white;
       border: none;
       padding: 0.8rem 1.5rem;
@@ -100,6 +115,8 @@
       font-size: 1rem;
       cursor: pointer;
       transition: transform 0.3s, opacity 0.3s;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
     }
     
     .submit-btn:hover, .export-btn:hover {
@@ -114,7 +131,7 @@
     .review-card {
       background: rgba(25, 25, 25, 0.9);
       border-left: 4px solid;
-      border-image: linear-gradient(to bottom, #e100ff, #7f00ff) 1 0 0 1;
+      border-image: linear-gradient(to bottom, #ff0000, #990000) 1 0 0 1;
       padding: 1.5rem;
       margin-bottom: 1.5rem;
       border-radius: 0 10px 10px 0;
@@ -124,12 +141,16 @@
       font-size: 1.1rem;
       line-height: 1.6;
       margin-bottom: 1rem;
+      font-family: 'VT323', monospace;
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
     }
     
     .reviewer-name {
       font-style: italic;
       color: #d9a7c7;
       text-align: right;
+      font-family: 'Share Tech Mono', monospace;
     }
     
     .anonymous {
@@ -143,6 +164,7 @@
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
+      font-family: 'Share Tech Mono', monospace;
     }
     
     .delete-btn {
@@ -155,6 +177,8 @@
       margin-left: 1rem;
       display: none;
       transition: background-color 0.3s;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
     }
     
     .delete-btn:hover {
@@ -171,6 +195,7 @@
       text-align: center;
       font-style: italic;
       display: none;
+      font-family: 'Share Tech Mono', monospace;
     }
     
     .admin-mode .admin-message {
@@ -184,8 +209,14 @@
       margin-top: 3rem;
     }
     
+    footer h2 {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
+    }
+    
     .contact-info p {
       margin: 0.5rem 0;
+      font-family: 'Share Tech Mono', monospace;
     }
     
     .social-links {
@@ -213,6 +244,19 @@
       margin-bottom: 1.5rem;
       border-radius: 5px;
       display: none;
+      font-family: 'VT323', monospace;
+      font-size: 1.2rem;
+    }
+    
+    .reviews-list p {
+      font-family: 'VT323', monospace;
+      font-size: 1.3rem;
+      text-align: center;
+      color: #888;
+    }
+    
+    #toggleAdminMode, #exportReviews {
+      background: linear-gradient(to right, #ff0000, #990000);
     }
   </style>
 </head>
@@ -303,14 +347,29 @@
         const reviewerName = document.getElementById('reviewerName').value || 'Anonymous';
         const timestamp = new Date().toISOString();
         
-        // Count and analyze the review content
+        // Count pronouns in the review
+        const pronounCounts = countPronouns(reviewContent);
+        
+        // Log pronoun counts to console
+        console.log('---- Pronoun Analysis ----');
+        console.log(`Total Pronouns: ${pronounCounts.total}`);
+        console.log('Pronoun Categories:');
+        console.log(`• Personal Pronouns: ${pronounCounts.personal}`);
+        console.log(`• Demonstrative Pronouns: ${pronounCounts.demonstrative}`);
+        console.log(`• Interrogative Pronouns: ${pronounCounts.interrogative}`);
+        console.log(`• Relative Pronouns: ${pronounCounts.relative}`);
+        console.log(`• Indefinite Pronouns: ${pronounCounts.indefinite}`);
+        console.log('Specific Pronoun Counts:', pronounCounts.specific);
+        console.log('------------------------');
+        
+        // Existing word count and other analysis
         const wordCount = reviewContent.trim().split(/\s+/).length;
         const numberCount = (reviewContent.match(/\d/g) || []).length;
         const spaceCount = (reviewContent.match(/\s/g) || []).length;
         const newlineCount = (reviewContent.match(/\n/g) || []).length;
         const specialCharCount = (reviewContent.match(/[^\w\s]/g) || []).length;
         
-        // Log counts to the console
+        // Log counts to the console (existing code)
         console.log({
           "Word Count": wordCount,
           "Number Count": numberCount,
@@ -320,6 +379,7 @@
           "Total Characters": reviewContent.length
         });
         
+        // Rest of the existing submission handler code
         const review = {
           content: reviewContent,
           name: reviewerName,
@@ -450,6 +510,55 @@
           
           reviewsList.appendChild(reviewCard);
         });
+      }
+      
+      // Function to count pronouns in text
+      function countPronouns(text) {
+        // Convert text to lowercase and split into words
+        const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+        
+        // Define pronoun categories
+        const pronouns = {
+          personal: ['i', 'me', 'my', 'mine', 'you', 'your', 'yours', 'he', 'him', 'his', 'she', 'her', 'hers', 'it', 'its', 'we', 'us', 'our', 'ours', 'they', 'them', 'their', 'theirs'],
+          demonstrative: ['this', 'that', 'these', 'those'],
+          interrogative: ['who', 'whom', 'whose', 'which', 'what'],
+          relative: ['who', 'whom', 'whose', 'which', 'that'],
+          indefinite: ['anyone', 'anybody', 'anything', 'each', 'either', 'everyone', 'everybody', 'everything', 'neither', 'nobody', 'nothing', 'someone', 'somebody', 'something', 'both', 'few', 'many', 'several', 'all', 'some', 'most', 'none']
+        };
+        
+        // Initialize counts
+        const counts = {
+          total: 0,
+          personal: 0,
+          demonstrative: 0,
+          interrogative: 0,
+          relative: 0,
+          indefinite: 0,
+          specific: {}
+        };
+        
+        // Count occurrences of each pronoun
+        words.forEach(word => {
+          // Check each pronoun category
+          for (const [category, categoryPronouns] of Object.entries(pronouns)) {
+            if (categoryPronouns.includes(word)) {
+              counts[category]++;
+              counts.total++;
+              
+              // Count specific pronouns
+              if (!counts.specific[word]) {
+                counts.specific[word] = 1;
+              } else {
+                counts.specific[word]++;
+              }
+              
+              // Break since a word should only be in one category
+              break;
+            }
+          }
+        });
+        
+        return counts;
       }
       
       // Make deleteReview function global so it can be called from onclick
