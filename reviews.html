@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hari Aakash - Reviews</title>
+  <link rel="stylesheet" href="everythingILove.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    header nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    
+    .sections a {
+      color: #c0c0c0;
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      transition: background-color 0.3s;
+    }
+    
+    .sections a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .main-title {
+      font-size: 3rem;
+      margin: 3rem 0;
+      background: linear-gradient(to right, #e100ff, #7f00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    
+    .reviews-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .review-form {
+      background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(10, 10, 10, 0.9));
+      border: 2px solid;
+      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #d9a7c7;
+    }
+    
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #333;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .submit-btn, .export-btn {
+      background: linear-gradient(to right, #e100ff, #7f00ff);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    
+    .submit-btn:hover, .export-btn:hover {
+      transform: translateY(-3px);
+      opacity: 0.9;
+    }
+    
+    .reviews-list {
+      margin-top: 3rem;
+    }
+    
+    .review-card {
+      background: rgba(25, 25, 25, 0.9);
+      border-left: 4px solid;
+      border-image: linear-gradient(to bottom, #e100ff, #7f00ff) 1 0 0 1;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 0 10px 10px 0;
+    }
+    
+    .review-content {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .reviewer-name {
+      font-style: italic;
+      color: #d9a7c7;
+      text-align: right;
+    }
+    
+    .anonymous {
+      color: #888;
+    }
+    
+    .admin-controls {
+      margin-top: 3rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .delete-btn {
+      color: #ff4040;
+      background: rgba(255, 0, 0, 0.1);
+      border: 1px solid #ff4040;
+      border-radius: 4px;
+      padding: 0.3rem 0.5rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      display: none;
+      transition: background-color 0.3s;
+    }
+    
+    .delete-btn:hover {
+      background-color: rgba(255, 0, 0, 0.2);
+    }
+    
+    .admin-mode .delete-btn {
+      display: inline-block;
+    }
+    
+    .admin-message {
+      color: #e100ff;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-style: italic;
+      display: none;
+    }
+    
+    .admin-mode .admin-message {
+      display: block;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #fff;
+      margin-top: 3rem;
+    }
+    
+    .contact-info p {
+      margin: 0.5rem 0;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: #d9a7c7;
+    }
+    
+    .success-message {
+      background-color: rgba(0, 255, 0, 0.2);
+      border: 1px solid #00ff00;
+      color: #00ff00;
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="sections">
+        <a href="index.html">Home</a>
+        <a href="hobbies.html">Hobbies</a>
+        <a href="tech-skills.html">Tech Skills</a>
+        <a href="education.html">Education</a>
+        <a href="reviews.html">Reviews</a>
+      </div>
+    </nav>
+  </header>
+  
+  <main>
+    <h1 class="main-title">Share Your Thoughts</h1>
+    
+    <div class="reviews-container">
+      <div class="review-form">
+        <div class="success-message" id="successMessage">
+          Your review has been submitted successfully!
+        </div>
+        <form id="reviewForm" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+          <div class="form-group">
+            <label for="reviewContent">Your Review*</label>
+            <textarea id="reviewContent" required placeholder="Share your thoughts about me..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="reviewerName">Your Name (Optional)</label>
+            <input type="text" id="reviewerName" placeholder="Leave blank to remain anonymous">
+          </div>
+          
+          <button type="submit" class="submit-btn">Submit Review</button>
+        </form>
+      </div>
+      
+      <div class="admin-message" id="adminMessage">
+        Admin mode active. You can now delete reviews.
+      </div>
+      
+      <div class="reviews-list" id="reviewsList">
+        <!-- Reviews will be displayed here -->
+      </div>
+      
+      <div class="admin-controls">
+        <button id="exportReviews" class="export-btn">Export Reviews</button>
+        <button id="toggleAdminMode" class="export-btn">Toggle Admin Mode</button>
+        <button id="clearAllReviews" class="export-btn" style="background: linear-gradient(to right, #ff0000, #ff5500); display: none;">Delete All Reviews</button>
+      </div>
+    </div>
+  </main>
+  
+  <footer id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <p><i class="fas fa-envelope"></i> Personal: hariaakash646@gmail.com</p>
+      <p><i class="fas fa-envelope"></i> Professional: hariaakash.k@research.iiit.ac.in</p>
+    </div>
+    <div class="social-links">
+      <a href="https://twitter.com/hari_aakash" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://github.com/HariAakash646" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/hari-aakash" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const reviewForm = document.getElementById('reviewForm');
+      const reviewsList = document.getElementById('reviewsList');
+      const exportButton = document.getElementById('exportReviews');
+      const toggleAdminButton = document.getElementById('toggleAdminMode');
+      const clearAllButton = document.getElementById('clearAllReviews');
+      const adminMessage = document.getElementById('adminMessage');
+      const successMessage = document.getElementById('successMessage');
+      let adminMode = false;
+      
+      // Load existing reviews
+      loadReviews();
+      
+      // Handle form submission
+      reviewForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const reviewContent = document.getElementById('reviewContent').value;
+        const reviewerName = document.getElementById('reviewerName').value || 'Anonymous';
+        const timestamp = new Date().toISOString();
+        
+        const review = {
+          content: reviewContent,
+          name: reviewerName,
+          timestamp: timestamp
+        };
+        
+        // Save to localStorage
+        saveReview(review);
+        
+        // Show success message
+        successMessage.style.display = 'block';
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 3000);
+        
+        // Clear form
+        reviewForm.reset();
+        
+        // Reload reviews
+        loadReviews();
+      });
+      
+      // Handle export button
+      exportButton.addEventListener('click', function() {
+        // Get reviews from localStorage
+        const reviews = JSON.parse(localStorage.getItem('userReviews')) || [];
+        
+        // Create a blob with the data
+        const blob = new Blob([JSON.stringify(reviews, null, 2)], { type: 'application/json' });
+        
+        // Create a download link
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'reviews_export_' + new Date().toISOString().split('T')[0] + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+      
+      // Handle admin mode toggle
+      toggleAdminButton.addEventListener('click', function() {
+        // Simple password protection
+        if (!adminMode) {
+          const password = prompt("Enter admin password:");
+          if (password === "password646") { // You should change this to a more secure password
+            adminMode = true;
+            document.body.classList.add('admin-mode');
+            clearAllButton.style.display = 'block';
+            loadReviews(); // Reload reviews with delete buttons
+          } else if (password !== null) {
+            alert("Incorrect password");
+          }
+        } else {
+          adminMode = false;
+          document.body.classList.remove('admin-mode');
+          clearAllButton.style.display = 'none';
+          loadReviews(); // Reload reviews without delete buttons
+        }
+      });
+      
+      // Handle clear all reviews
+      clearAllButton.addEventListener('click', function() {
+        if (confirm("Are you sure you want to delete ALL reviews? This cannot be undone.")) {
+          localStorage.removeItem('userReviews');
+          loadReviews();
+        }
+      });
+      
+      // Function to save review to localStorage
+      function saveReview(review) {
+        const reviews = JSON.parse(localStorage.getItem('userReviews')) || [];
+        reviews.push(review);
+        localStorage.setItem('userReviews', JSON.stringify(reviews));
+      }
+      
+      // Function to delete a single review
+      function deleteReview(timestamp) {
+        if (confirm("Are you sure you want to delete this review?")) {
+          const reviews = JSON.parse(localStorage.getItem('userReviews')) || [];
+          const updatedReviews = reviews.filter(review => review.timestamp !== timestamp);
+          localStorage.setItem('userReviews', JSON.stringify(updatedReviews));
+          loadReviews();
+        }
+      }
+      
+      // Function to load and display reviews
+      function loadReviews() {
+        const reviews = JSON.parse(localStorage.getItem('userReviews')) || [];
+        
+        if (reviews.length === 0) {
+          reviewsList.innerHTML = '<p>No reviews yet. Be the first to share your thoughts!</p>';
+          return;
+        }
+        
+        // Sort reviews by timestamp (newest first)
+        reviews.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        
+        // Clear current reviews
+        reviewsList.innerHTML = '';
+        
+        // Add review cards
+        reviews.forEach(review => {
+          const reviewCard = document.createElement('div');
+          reviewCard.classList.add('review-card');
+          
+          const formattedDate = new Date(review.timestamp).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          });
+          
+          const deleteButton = adminMode ? 
+            `<button class="delete-btn" onclick="deleteReview('${review.timestamp}')">
+              <i class="fas fa-trash"></i> Delete
+            </button>` : '';
+          
+          reviewCard.innerHTML = `
+            <div class="review-content">${review.content}</div>
+            <div class="reviewer-name">
+              ${review.name === 'Anonymous' ? 
+                '<span class="anonymous">Anonymous</span>' : 
+                review.name} - ${formattedDate}
+              ${deleteButton}
+            </div>
+          `;
+          
+          reviewsList.appendChild(reviewCard);
+        });
+      }
+      
+      // Make deleteReview function global so it can be called from onclick
+      window.deleteReview = deleteReview;
+    });
+  </script>
+</body>
+</html>
