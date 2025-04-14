@@ -86,6 +86,9 @@
     textarea {
       min-height: 150px;
       resize: vertical;
+      maxlength: 100000;
+      rows: 10;
+      cols: 50;
     }
     
     .submit-btn, .export-btn {
@@ -272,9 +275,9 @@
       <p><i class="fas fa-envelope"></i> Professional: hariaakash.k@research.iiit.ac.in</p>
     </div>
     <div class="social-links">
-      <a href="https://twitter.com/hari_aakash" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://twitter.com/HariAakashK" target="_blank"><i class="fab fa-twitter"></i></a>
       <a href="https://github.com/HariAakash646" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/hari-aakash" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://linkedin.com/in/hariaakash646" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
   </footer>
   
@@ -299,6 +302,23 @@
         const reviewContent = document.getElementById('reviewContent').value;
         const reviewerName = document.getElementById('reviewerName').value || 'Anonymous';
         const timestamp = new Date().toISOString();
+        
+        // Count and analyze the review content
+        const wordCount = reviewContent.trim().split(/\s+/).length;
+        const numberCount = (reviewContent.match(/\d/g) || []).length;
+        const spaceCount = (reviewContent.match(/\s/g) || []).length;
+        const newlineCount = (reviewContent.match(/\n/g) || []).length;
+        const specialCharCount = (reviewContent.match(/[^\w\s]/g) || []).length;
+        
+        // Log counts to the console
+        console.log({
+          "Word Count": wordCount,
+          "Number Count": numberCount,
+          "Space Count": spaceCount,
+          "Special Character Count": specialCharCount,
+          "Newline Count": newlineCount,
+          "Total Characters": reviewContent.length
+        });
         
         const review = {
           content: reviewContent,
