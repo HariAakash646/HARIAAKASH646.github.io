@@ -87,40 +87,29 @@
     }
     
     .hobby-content {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      flex-wrap: wrap;
+      display: block;  /* Change from flex to block */
+      width: 100%;
     }
     
+    /* Remove image-specific styles or mark them as unused */
+    .hobby-image {
+      display: none;  /* Hide any existing images */
+    }
+    
+    /* Update hobby-details to take full width */
+    .hobby-details {
+      width: 100%;
+    }
+    
+    /* Media query adjustments no longer needed for image layout */
     @media (max-width: 768px) {
       .hobby-content {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: initial;
       }
       
       .hobby-image {
-        margin-bottom: 1.5rem;
-        width: 100%;
-        max-width: 250px;
+        display: none;
       }
-    }
-    
-    .hobby-image {
-      width: 250px;
-      height: auto;
-      max-height: 250px;
-      border-radius: 15px;
-      object-fit: contain;
-      border: 2px solid transparent;
-      border-image: linear-gradient(to right, #ff0000, #990000) 1;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      flex-shrink: 0;
-    }
-    
-    .hobby-card:hover .hobby-image {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
     }
     
     .hobby-details {
@@ -217,7 +206,7 @@
       <!-- Cricket -->
       <div class="hobby-card">
         <div class="hobby-content">
-          <img src="images/cricket_pic.jpg" alt="Cricket" class="hobby-image">
+          <!-- Image element removed -->
           <div class="hobby-details">
             <h2 class="hobby-title">Cricket</h2>
             <p class="hobby-description">
@@ -239,7 +228,7 @@
       <!-- Basketball -->
       <div class="hobby-card">
         <div class="hobby-content">
-          <img src="https://via.placeholder.com/250" alt="Basketball" class="hobby-image">
+          <!-- Image element removed -->
           <div class="hobby-details">
             <h2 class="hobby-title">Basketball</h2>
             <p class="hobby-description">
@@ -253,7 +242,7 @@
       <!-- Sci-Fi & Fantasy -->
       <div class="hobby-card">
         <div class="hobby-content">
-          <img src="https://via.placeholder.com/250" alt="Sci-Fi and Fantasy" class="hobby-image">
+          <!-- Image element removed -->
           <div class="hobby-details">
         <h2 class="hobby-title">Sci-Fi & Fantasy</h2>
         <p class="hobby-description">
@@ -278,5 +267,17 @@
         <p><i class="fas fa-envelope"></i> Professional: hariaakash.k@research.iiit.ac.in</p>
       </div>
       <div class="social-links">
-        <a href="https://twitter
-
+        <a href="https://twitter.com/HariAakashK" target="_blank" title="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://linkedin.com/in/hariaakash646" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/HariAakash646" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </footer>
+  </body>
+  </html>
+  
