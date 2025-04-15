@@ -354,12 +354,11 @@
         console.log('---- Pronoun Analysis ----');
         console.log(`Total Pronouns: ${pronounCounts.total}`);
         console.log('Pronoun Categories:');
-        console.log(`• Personal Pronouns: ${pronounCounts.personal}`);
-        console.log(`• Demonstrative Pronouns: ${pronounCounts.demonstrative}`);
-        console.log(`• Interrogative Pronouns: ${pronounCounts.interrogative}`);
-        console.log(`• Relative Pronouns: ${pronounCounts.relative}`);
-        console.log(`• Indefinite Pronouns: ${pronounCounts.indefinite}`);
-        console.log('Specific Pronoun Counts:', pronounCounts.specific);
+        console.log(`Personal Pronouns: ${pronounCounts.personal}`);
+        console.log(`Demonstrative Pronouns: ${pronounCounts.demonstrative}`);
+        console.log(`Interrogative Pronouns: ${pronounCounts.interrogative}`);
+        console.log(`Relative Pronouns: ${pronounCounts.relative}`);
+        console.log(`Indefinite Pronouns: ${pronounCounts.indefinite}`);
         console.log('------------------------');
         
         // Count prepositions in the review
@@ -369,11 +368,10 @@
         console.log('---- Preposition Analysis ----');
         console.log(`Total Prepositions: ${prepositionCounts.total}`);
         console.log('Preposition Categories:');
-        console.log(`• Simple Prepositions: ${prepositionCounts.simple}`);
-        console.log(`• Compound Prepositions: ${prepositionCounts.compound}`);
-        console.log(`• Spatial Prepositions: ${prepositionCounts.spatial} (subset of simple/compound)`);
-        console.log(`• Temporal Prepositions: ${prepositionCounts.temporal} (subset of simple/compound)`);
-        console.log('Specific Preposition Counts:', prepositionCounts.specific);
+        console.log(`Simple Prepositions: ${prepositionCounts.simple}`);
+        console.log(`Compound Prepositions: ${prepositionCounts.compound}`);
+        console.log(`Spatial Prepositions: ${prepositionCounts.spatial} (subset of simple/compound)`);
+        console.log(`Temporal Prepositions: ${prepositionCounts.temporal} (subset of simple/compound)`);
         console.log('------------------------');
         
         // Count indefinite articles in the review
@@ -383,25 +381,8 @@
         console.log('---- Indefinite Article Analysis ----');
         console.log(`Total Indefinite Articles: ${articleCounts.total}`);
         console.log('Article Types:');
-        console.log(`• "a": ${articleCounts.a}`);
-        console.log(`• "an": ${articleCounts.an}`);
-        
-        // Log detailed usage information
-        console.log('Following Words:');
-        if (articleCounts.followingWords.a.length > 0) {
-          console.log(`• Words after "a": ${articleCounts.followingWords.a.join(', ')}`);
-        }
-        if (articleCounts.followingWords.an.length > 0) {
-          console.log(`• Words after "an": ${articleCounts.followingWords.an.join(', ')}`);
-        }
-        
-        // Log usage correctness
-        console.log('Usage Analysis:');
-        console.log(`• Correct "a" usage: ${articleCounts.correctUsage.a}`);
-        console.log(`• Correct "an" usage: ${articleCounts.correctUsage.an}`);
-        if (articleCounts.correctUsage.incorrect.length > 0) {
-          console.log(`• Potentially incorrect usage: ${articleCounts.correctUsage.incorrect.join(', ')}`);
-        }
+        console.log(`"a": ${articleCounts.a}`);
+        console.log(`"an": ${articleCounts.an}`);
         console.log('----------------------------------');
         
         // Existing word count and other analysis
