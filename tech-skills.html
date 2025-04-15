@@ -15,12 +15,18 @@
       }
     }
   </script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+  
   <style>
     body {
       background-color: #000;
       color: #fff;
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Share Tech Mono', monospace;
     }
     
     header nav {
@@ -44,6 +50,9 @@
       text-decoration: none;
       padding: 0.3rem 0.6rem;
       transition: background-color 0.3s;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      letter-spacing: 1px;
     }
     
     .sections a:hover {
@@ -59,11 +68,14 @@
     
     .main-title {
       font-size: 3rem;
-      margin: 3rem 0;
-      background: linear-gradient(to right, #e100ff, #7f00ff);
+      margin: 2rem 0;
+      background: linear-gradient(to right, #ff0000, #990000);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
     }
     
     .skills-container {
@@ -78,7 +90,7 @@
     .skill-card {
       background: linear-gradient(135deg, rgba(25, 25, 25, 0.9), rgba(10, 10, 10, 0.9));
       border: 2px solid;
-      border-image: linear-gradient(to right, #e100ff, #7f00ff) 1;
+      border-image: linear-gradient(to right, #ff0000, #990000) 1;
       border-radius: 20px;
       padding: 3rem; /* Increased padding */
       position: relative;
@@ -90,8 +102,8 @@
     }
     
     .skill-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(225, 0, 255, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
     }
     
     .skill-card::before {
@@ -141,6 +153,7 @@
       line-height: 1.6;
       color: #f0f0f0;
       margin-bottom: 1.5rem; /* Add margin to compensate for removed progress bar */
+      font-family: 'Share Tech Mono', monospace;
     }
     
     .skill-tags {
@@ -169,6 +182,7 @@
       padding: 2rem;
       border-top: 1px solid #fff;
       margin-top: 3rem;
+      font-family: 'Share Tech Mono', monospace;
     }
     
     .contact-info p {
@@ -189,7 +203,7 @@
     }
     
     .social-links a:hover {
-      color: #d9a7c7;
+      color: #ff9999;
     }
     
     @media screen and (max-width: 768px) {
@@ -214,13 +228,10 @@
   <header>
     <nav>
       <div class="aesthetic">
-        <select onchange="changeAesthetic(this)">
-          <option>Professional</option>
-          <option selected>Everything I love</option>
-        </select>
+        
       </div>
       <div class="sections">
-        <a href="everythingILove.html">Home</a>
+        <a href="index.html">Home</a>
         <a href="#skills">Skills</a>
         <a href="education.html">Education</a>
         <a href="gallery.html">Gallery</a>
@@ -240,10 +251,9 @@
         </div>
         <div class="skill-content">
           <p class="skill-description">
-            International Master on Codeforces with strong algorithmic thinking and problem-solving skills. 
-            I enjoy the thrill of solving complex algorithmic challenges under time pressure and have 
-            participated in numerous competitions including ICPC regionals. My passion lies in optimizing 
-            solutions and finding the most elegant approach to difficult problems.
+            International Master at Codeforces. 
+            Qualified for ICPC World Finals 2025 at Azerbaijan. 
+            Love solving algorithmic puzzles and optimizing solutions.
           </p>
           <!-- Progress bar removed -->
           <div class="skill-tags">
@@ -251,8 +261,6 @@
             <span class="tag">Data Structures</span>
             <span class="tag">Problem Solving</span>
             <span class="tag">C++</span>
-            <span class="tag">Codeforces</span>
-            <span class="tag">ICPC</span>
           </div>
         </div>
       </div>
@@ -265,10 +273,9 @@
         </div>
         <div class="skill-content">
           <p class="skill-description">
-            Fascinated by the potential of AI to solve real-world problems. I have experience working with 
-            various machine learning models, deep learning architectures, and natural language processing. 
-            Currently working on making algorithms learn algorithms - exploring the intersection of competitive 
-            programming and machine learning to create systems that can generate optimized code.
+            Enjoy learning about how machines learn and making machines learn. 
+            Working on Artificial Intelligence research at Precog@IIITH.
+            Currently working with Graph Language Models.
           </p>
           <!-- Progress bar removed -->
           <div class="skill-tags">
@@ -277,7 +284,6 @@
             <span class="tag">Neural Networks</span>
             <span class="tag">NLP</span>
             <span class="tag">TensorFlow</span>
-            <span class="tag">PyTorch</span>
           </div>
         </div>
       </div>
@@ -290,16 +296,12 @@
         </div>
         <div class="skill-content">
           <p class="skill-description">
-            Python is my go-to language for quick prototyping and data science projects. I've developed 
-            numerous applications and tools using Python and its extensive ecosystem of libraries. 
-            From web scrapers to data analysis pipelines and machine learning models, I leverage Python's 
-            versatility to turn ideas into reality efficiently.
+            Python is the first language I learnt. This is the language I use most for non CP related programming.
+            Currently, I use Python for all my research related programming.
           </p>
           <!-- Progress bar removed -->
           <div class="skill-tags">
             <span class="tag">Data Science</span>
-            <span class="tag">Web Scraping</span>
-            <span class="tag">Automation</span>
             <span class="tag">Machine Learning</span>
             <span class="tag">Python</span>
           </div>
@@ -314,15 +316,13 @@
         </div>
         <div class="skill-content">
           <p class="skill-description">
-            Working on research projects at Precog has honed my ability to formulate research questions, 
-            design experiments, and analyze results methodically. I enjoy diving deep into complex problems, 
-            reviewing literature, and contributing to the academic community. My research interests include 
-            algorithmic optimization, machine learning applications, and the theoretical foundations of AI.
+            I am currently working on research projects at Precog@IIITH.
+            I am working on Neural Algorithmic Reasoning and Graph Language Models.
+            Working towards a submission at NeurIPS 2025.
           </p>
           <!-- Progress bar removed -->
-          <div class="skill-tags">
-            <span class="tag">Liter
-  </footer>
+        </div>
+      </div>
   <footer>
     <div class="contact-info">
       <p><i class="fas fa-envelope"></i> Personal: hariaakash646@gmail.com</p>

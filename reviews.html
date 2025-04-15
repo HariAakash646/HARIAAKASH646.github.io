@@ -362,6 +362,48 @@
         console.log('Specific Pronoun Counts:', pronounCounts.specific);
         console.log('------------------------');
         
+        // Count prepositions in the review
+        const prepositionCounts = countPrepositions(reviewContent);
+        
+        // Log preposition counts to console
+        console.log('---- Preposition Analysis ----');
+        console.log(`Total Prepositions: ${prepositionCounts.total}`);
+        console.log('Preposition Categories:');
+        console.log(`• Simple Prepositions: ${prepositionCounts.simple}`);
+        console.log(`• Compound Prepositions: ${prepositionCounts.compound}`);
+        console.log(`• Spatial Prepositions: ${prepositionCounts.spatial} (subset of simple/compound)`);
+        console.log(`• Temporal Prepositions: ${prepositionCounts.temporal} (subset of simple/compound)`);
+        console.log('Specific Preposition Counts:', prepositionCounts.specific);
+        console.log('------------------------');
+        
+        // Count indefinite articles in the review
+        const articleCounts = countIndefiniteArticles(reviewContent);
+        
+        // Log indefinite article counts to console
+        console.log('---- Indefinite Article Analysis ----');
+        console.log(`Total Indefinite Articles: ${articleCounts.total}`);
+        console.log('Article Types:');
+        console.log(`• "a": ${articleCounts.a}`);
+        console.log(`• "an": ${articleCounts.an}`);
+        
+        // Log detailed usage information
+        console.log('Following Words:');
+        if (articleCounts.followingWords.a.length > 0) {
+          console.log(`• Words after "a": ${articleCounts.followingWords.a.join(', ')}`);
+        }
+        if (articleCounts.followingWords.an.length > 0) {
+          console.log(`• Words after "an": ${articleCounts.followingWords.an.join(', ')}`);
+        }
+        
+        // Log usage correctness
+        console.log('Usage Analysis:');
+        console.log(`• Correct "a" usage: ${articleCounts.correctUsage.a}`);
+        console.log(`• Correct "an" usage: ${articleCounts.correctUsage.an}`);
+        if (articleCounts.correctUsage.incorrect.length > 0) {
+          console.log(`• Potentially incorrect usage: ${articleCounts.correctUsage.incorrect.join(', ')}`);
+        }
+        console.log('----------------------------------');
+        
         // Existing word count and other analysis
         const wordCount = reviewContent.trim().split(/\s+/).length;
         const numberCount = (reviewContent.match(/\d/g) || []).length;
@@ -555,6 +597,153 @@
               // Break since a word should only be in one category
               break;
             }
+          }
+        });
+        
+        return counts;
+      }
+      
+      // Function to count prepositions in text
+      function countPrepositions(text) {
+        // Convert text to lowercase to make matching case-insensitive
+        const lowercaseText = text.toLowerCase();
+        
+        // Define preposition categories
+        const prepositions = {
+          simple: ['at', 'by', 'for', 'from', 'in', 'of', 'on', 'to', 'with', 'about', 'above', 'across', 'after', 'against', 'along', 'among', 'around', 'as', 'before', 'behind', 'below', 'beneath', 'beside', 'between', 'beyond', 'but', 'despite', 'down', 'during', 'except', 'inside', 'like', 'near', 'off', 'over', 'past', 'since', 'through', 'throughout', 'till', 'toward', 'under', 'underneath', 'until', 'up', 'via', 'within', 'without'],
+          compound: ['according to', 'ahead of', 'apart from', 'as for', 'as of', 'as per', 'as regards', 'aside from', 'because of', 'close to', 'due to', 'except for', 'far from', 'in addition to', 'in between', 'in case of', 'in front of', 'in lieu of', 'in place of', 'in spite of', 'instead of', 'near to', 'next to', 'on account of', 'on behalf of', 'on top of', 'out of', 'outside of', 'owing to', 'prior to', 'pursuant to', 'rather than', 'regardless of', 'thanks to', 'together with', 'up to', 'with regard to'],
+          spatial: ['above', 'across', 'against', 'along', 'among', 'around', 'at', 'before', 'behind', 'below', 'beneath', 'beside', 'between', 'beyond', 'by', 'down', 'from', 'in', 'inside', 'into', 'near', 'off', 'on', 'onto', 'opposite', 'outside', 'over', 'past', 'through', 'to', 'toward', 'under', 'underneath', 'up', 'upon', 'within'],
+          temporal: ['after', 'at', 'before', 'by', 'during', 'following', 'for', 'from', 'in', 'on', 'prior to', 'since', 'till', 'to', 'until', 'when', 'while']
+        };
+        
+        // Initialize counts
+        const counts = {
+          total: 0,
+          simple: 0,
+          compound: 0,
+          spatial: 0,
+          temporal: 0,
+          specific: {}
+        };
+        
+        // Count simple prepositions
+        prepositions.simple.forEach(prep => {
+          // Create a regex that matches the preposition as a whole word
+          const regex = new RegExp('\\b' + prep + '\\b', 'gi');
+          const matches = lowercaseText.match(regex) || [];
+          
+          if (matches.length > 0) {
+            counts.simple += matches.length;
+            counts.total += matches.length;
+            counts.specific[prep] = matches.length;
+          }
+        });
+        
+        // Count compound prepositions
+        prepositions.compound.forEach(prep => {
+          const regex = new RegExp('\\b' + prep.replace(/ /g, '\\s+') + '\\b', 'gi');
+          const matches = lowercaseText.match(regex) || [];
+          
+          if (matches.length > 0) {
+            counts.compound += matches.length;
+            counts.total += matches.length;
+            counts.specific[prep] = matches.length;
+          }
+        });
+        
+        // Note: Spatial and temporal prepositions might overlap with simple ones,
+        // but we'll count them separately for category analysis
+        
+        // Count spatial prepositions (already counted in simple, this is for category analysis)
+        prepositions.spatial.forEach(prep => {
+          const regex = new RegExp('\\b' + prep + '\\b', 'gi');
+          const matches = lowercaseText.match(regex) || [];
+          
+          if (matches.length > 0) {
+            counts.spatial += matches.length;
+            // Don't increment total again, as these are already counted in simple prepositions
+          }
+        });
+        
+        // Count temporal prepositions (already counted in simple/compound, this is for category analysis)
+        prepositions.temporal.forEach(prep => {
+          const regex = new RegExp('\\b' + prep.replace(/ /g, '\\s+') + '\\b', 'gi');
+          const matches = lowercaseText.match(regex) || [];
+          
+          if (matches.length > 0) {
+            counts.temporal += matches.length;
+            // Don't increment total again, as these are already counted
+          }
+        });
+        
+        return counts;
+      }
+      
+      // Function to count indefinite articles in text
+      function countIndefiniteArticles(text) {
+        // Convert text to lowercase for case-insensitive matching
+        const lowercaseText = text.toLowerCase();
+        
+        // Initialize count object
+        const counts = {
+          total: 0,
+          a: 0,
+          an: 0,
+          // Track occurrences with following words for context
+          followingWords: {
+            a: [],
+            an: []
+          }
+        };
+        
+        // Find all occurrences of "a" as a whole word
+        const aRegex = /\ba\s+(\w+)/g;
+        let aMatch;
+        while ((aMatch = aRegex.exec(lowercaseText)) !== null) {
+          counts.a++;
+          counts.total++;
+          // Store the word that follows "a" for context
+          if (aMatch[1]) {
+            counts.followingWords.a.push(aMatch[1]);
+          }
+        }
+        
+        // Find all occurrences of "an" as a whole word
+        const anRegex = /\ban\s+(\w+)/g;
+        let anMatch;
+        while ((anMatch = anRegex.exec(lowercaseText)) !== null) {
+          counts.an++;
+          counts.total++;
+          // Store the word that follows "an" for context
+          if (anMatch[1]) {
+            counts.followingWords.an.push(anMatch[1]);
+          }
+        }
+        
+        // Check for correct usage based on phonetic rules
+        counts.correctUsage = {
+          a: 0,
+          an: 0,
+          incorrect: []
+        };
+        
+        // Analyze correct usage of "a" (before consonant sounds)
+        counts.followingWords.a.forEach(word => {
+          const startsWithVowelSound = /^[aeiou]/i.test(word);
+          if (!startsWithVowelSound) {
+            counts.correctUsage.a++;
+          } else {
+            counts.correctUsage.incorrect.push(`"a ${word}" (should be "an ${word}")`);
+          }
+        });
+        
+        // Analyze correct usage of "an" (before vowel sounds)
+        counts.followingWords.an.forEach(word => {
+          const startsWithVowelSound = /^[aeiou]/i.test(word);
+          if (startsWithVowelSound) {
+            counts.correctUsage.an++;
+          } else {
+            counts.correctUsage.incorrect.push(`"an ${word}" (should be "a ${word}")`);
           }
         });
         

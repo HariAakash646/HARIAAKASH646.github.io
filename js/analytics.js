@@ -54,11 +54,11 @@ class WebsiteAnalytics {
           
           // Log to console with appropriate styling
           console.log(
-            `%c PAGE VIEW: ${elementTag}${elementId ? '#'+elementId : ''}${elementClass ? '.'+elementClass.replace(/\s+/g, '.') : ''}`, 
-            'color: #4CAF50; font-weight: bold;'
+            `PAGE VIEW: ${elementTag}${elementId ? '#'+elementId : ''}${elementClass ? '.'+elementClass.replace(/\s+/g, '.') : ''}`, 
+            // 'color: #4CAF50; font-weight: bold;'
           );
           if (elementText) {
-            console.log(`  Content: "${elementText}${elementText.length >= 50 ? '...' : ''}"`);
+            // console.log(`  Content: "${elementText}${elementText.length >= 50 ? '...' : ''}"`);
           }
           console.log(`  Path: ${viewData.path}`);
         }
@@ -100,16 +100,16 @@ class WebsiteAnalytics {
       
       // Log to console with appropriate styling
       console.log(
-        `%c CLICK: ${elementTag}${elementId ? '#'+elementId : ''}${elementClass ? '.'+elementClass.replace(/\s+/g, '.') : ''}`, 
-        'color: #2196F3; font-weight: bold;'
+        `CLICK: ${elementTag}${elementId ? '#'+elementId : ''}${elementClass ? '.'+elementClass.replace(/\s+/g, '.') : ''}`, 
+        // 'color: #2196F3; font-weight: bold;'
       );
       if (elementText) {
-        console.log(`  Content: "${elementText}${elementText.length >= 50 ? '...' : ''}"`);
+        // console.log(`  Content: "${elementText}${elementText.length >= 50 ? '...' : ''}"`);
       }
       if (elementHref) {
         console.log(`  Link: ${elementHref}`);
       }
-      console.log(`  Position: x=${event.clientX}, y=${event.clientY}`);
+      // console.log(`  Position: x=${event.clientX}, y=${event.clientY}`);
       console.log(`  Path: ${clickData.path}`);
     });
   }

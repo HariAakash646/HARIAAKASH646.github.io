@@ -678,6 +678,78 @@
       text-align: center;
       font-family: 'Share Tech Mono', monospace;
     }
+
+    /* Update interest card styles to better contain text */
+    .interest-card {
+      /* ...existing styles... */
+      min-height: 300px; /* Increase minimum height to fit content */
+      padding: 1.5rem 1.5rem; /* Slightly more horizontal padding */
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Make the interest info take all available space with proper spacing */
+    .interest-info {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    
+    /* Adjust description text styling */
+    .interest-description {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #cccccc;
+      line-height: 1.5; /* Slightly increased line height for better readability */
+      text-align: center;
+      font-family: 'Share Tech Mono', monospace;
+      overflow-wrap: break-word; /* Ensure long words don't overflow */
+      word-wrap: break-word;
+      hyphens: auto;
+      /* Add a max-height with fade-out effect if needed */
+      max-height: 150px;
+      overflow: auto; /* Allow scrolling if text is too long */
+      padding: 0 0.5rem; /* Add a bit of horizontal padding */
+    }
+    
+    /* Add a custom scrollbar for the description if needed */
+    .interest-description::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    
+    .interest-description::-webkit-scrollbar-thumb {
+      background: rgba(255, 102, 102, 0.5);
+      border-radius: 2px;
+    }
+    
+    .interest-description::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 2px;
+    }
+    
+    @media (max-width: 800px) {
+      .interest-card {
+        min-height: 250px; /* Smaller on mobile */
+        padding: 1.5rem 1rem;
+      }
+    }
+
+    /* Update any header/body separator colors */
+    header {
+      border-bottom-color: #ff0000 !important;
+    }
+    
+    main {
+      border-top-color: #ff0000 !important;
+    }
+    
+    /* Ensure any other yellow borders are changed to red */
+    .yellow-border, [style*="border"][style*="#ffd700"] {
+      border-color: #ff0000 !important;
+    }
   </style>
 </head>
 <body>
@@ -694,10 +766,10 @@
     </nav>
   </header>
   <main>
-    <!-- Update image positioning and further reduce gap -->
+    <!-- Update the profile image border color from #ffd700 (gold) to #ff0000 (red) -->
     <div class="profile-image-container" style="text-align: center; margin: 2rem auto 0.2rem; position: relative; width: 200px;">
       <a href="gallery.html" style="text-decoration: none; color: inherit; display: block;">
-        <img src="images/my_pic.jpeg" alt="My Picture" style="width: 100%; border-radius: 50%; border: 3px solid #ffd700; display: block;">
+        <img src="images/my_pic.jpeg" alt="My Picture" style="width: 100%; border-radius: 50%; border: 3px solid #ff0000; display: block;">
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; background: rgba(0, 0, 0, 0.7); padding: 0.5rem 1rem; border-radius: 8px; opacity: 0; transition: opacity 0.3s;" class="hover-text">
           Click here for more pictures
         </div>
@@ -806,7 +878,7 @@
         <a href="education.html" class="page-link-card">
           <i class="fas fa-graduation-cap"></i>
           <h3>Education</h3>
-          <p>My journey through the world of learning</p>
+          <p>The Formal Educsation I received so far</p>
         </a>
         <a href="tech-skills.html" class="page-link-card">
           <i class="fas fa-laptop-code"></i>
@@ -829,9 +901,9 @@
     <!-- New CV download section -->
     <section class="cv-download-section">
       <div class="container">
-        <h2>My Resume</h2>
+        <h2>My CV</h2>
         <p>Want to learn more about my professional background and skills?</p>
-        <a href="documents/HariAakashK_Resume.pdf" download class="download-button">
+        <a href="documents/HariAakashK_CV.pdf" download class="download-button">
           <i class="fas fa-file-download"></i> Download CV
         </a>
       </div>
