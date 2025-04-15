@@ -1,0 +1,149 @@
+.stats-container {
+  margin: 20px 0;
+  display: block !important; 
+  border: 3px solid #ff0000; /* Changed to red to match site theme */
+  padding: 10px;
+  z-index: 100; /* Ensure it appears above other elements */
+  position: relative; /* Make it respect z-index */
+  background-color: #212121; /* Dark background for better contrast */
+  color: white; /* White text for dark theme */
+}
+
+.stats-box {
+  background-color: #181818;
+  border: 1px solid #565656;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+  position: relative;
+}
+
+.stats-box::before {
+  content: "STATISTICS";
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  background: linear-gradient(to right, #ff0000, #990000);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.stats-box h3 {
+  margin-top: 0;
+  color: #d9a7c7;
+  border-bottom: 1px solid #565656;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.stats-box ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+
+.stats-box li {
+  padding: 4px 0;
+}
+
+.stats-box strong {
+  color: #d9a7c7;
+}
+
+/* Add styling for the analyze button to match site theme */
+.analyze-btn {
+  background: linear-gradient(to right, #ff0000, #990000);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 0;
+  transition: transform 0.3s, opacity 0.3s;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+.analyze-btn:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+.analyze-btn:active {
+  background-color: #990000;
+}
+
+/* Add new styles for the detailed statistics sections */
+.stats-section {
+  margin-top: 20px;
+  border-top: 1px solid #565656;
+  padding-top: 15px;
+}
+
+.stats-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stats-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.stats-box h4 {
+  color: #ff5555;
+  margin: 15px 0 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+}
+
+.stats-box p {
+  margin: 5px 0;
+}
+
+/* Style the scrollbar for better visibility */
+.stats-box ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+.stats-box ul::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 4px;
+}
+
+.stats-box ul::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 4px;
+}
+
+.pronouns-section, .prepositions-section, .articles-section {
+  position: relative;
+}
+
+/* Add small icons to identify each section */
+.pronouns-section h4::before {
+  content: "👤";
+  margin-right: 8px;
+}
+
+.prepositions-section h4::before {
+  content: "🔄";
+  margin-right: 8px;
+}
+
+.articles-section h4::before {
+  content: "📝";
+  margin-right: 8px;
+}

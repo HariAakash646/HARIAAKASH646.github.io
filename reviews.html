@@ -259,6 +259,7 @@
       background: linear-gradient(to right, #ff0000, #990000);
     }
   </style>
+  <link rel="stylesheet" href="css/textStats.css">
 </head>
 <body>
   <header>
@@ -285,6 +286,7 @@
           <div class="form-group">
             <label for="reviewContent">Your Review*</label>
             <textarea id="reviewContent" required placeholder="Share your thoughts about me..."></textarea>
+            <button type="button" id="analyze-button" class="analyze-btn">Analyze Text</button>
           </div>
           
           <div class="form-group">
@@ -735,5 +737,56 @@
       window.deleteReview = deleteReview;
     });
   </script>
+  <script src="js/textAnalyzer.js"></script>
+  <script>
+  // This will help verify the button is working
+  document.addEventListener('DOMContentLoaded', function() {
+    console.clear(); // Clear previous console logs
+    console.log('Page fully loaded - checking for analyze button');
+    
+    const analyzeBtn = document.getElementById('analyze-button');
+    if (analyzeBtn) {
+      console.log('Analyze button found - adding direct click handler');
+      
+      // Add a direct click handler as a backup
+      analyzeBtn.onclick = function() {
+        console.log('Analyze button clicked via direct handler');
+        const reviewText = document.getElementById('reviewContent');
+        if (reviewText && reviewText.value.trim()) {
+          console.log('Analyzing text...');
+          
+          // Get stats directly
+          const text = reviewText.value;
+          const words = text.toLowerCase().trim().split(/\s+/);
+          const wordCount = words.length;
+          const charCount = text.replace(/\s/g, '').length;
+          
+          // Create stats display
+          let statsHtml = `
+            <div id="text-stats" class="stats-container" style="display:block!important;">
+              <div class="stats-box">
+                <h3>Text Statistics:</h3>
+                <ul>
+                  <li><strong>Word count:</strong> ${wordCount}</li>
+                  <li><strong>Character count:</strong> ${charCount}</li>
+                </ul>
+              </div>
+            </div>
+          `;
+          
+          // Insert after the button
+          this.insertAdjacentHTML('afterend', statsHtml);
+          
+          // Alert for visibility
+          alert('Analysis complete! Statistics shown below the analyze button.');
+        } else {
+          alert('Please enter some text to analyze.');
+        }
+      };
+    } else {
+      console.error('Could not find analyze button!');
+    }
+  });
+</script>
 </body>
 </html>
